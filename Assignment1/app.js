@@ -1,5 +1,7 @@
 const http=require('http')
 const PORT=3000
+const users=[]
+
 const server=http.createServer((req,res)=>{
     const url=req.url
     const method=req.method
@@ -17,12 +19,10 @@ const server=http.createServer((req,res)=>{
     if(url==='/users'){
         res.setHeader('Content-Type','text/html')
         res.write(`
-            <h1> List of users </h1>
-            <ul>
-            <li>Jose</li>
-            <li>Smith </li>
-            <li>Alex </li>
-            </ul>`)
+            <h1> List of users </h1>`)
+        users.forEach(user=>{
+            res.write(`<li>${user}</li>`)
+        })
         return res.end()
     }
     if(url==='/create-user'&&method==='POST'){
@@ -32,7 +32,9 @@ const server=http.createServer((req,res)=>{
         })
         req.on('end',()=>{
             const parseData=Buffer.concat(body).toString()
-            console.log(parseData.split('=')[1])
+            const user =parseData.split('=')[1]
+              users.push(user)
+              console.log(users)
         })
         res.statusCode=302
         res.setHeader('Location','/')
