@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css"/>
+</head>
+<body>
+    <div  class="navigationContainer">
+     <p class="navigationElements"><a href="/" class="navigationElements">Home</a></p>
+     <p class="navigationElements"><a href="/add-user" class="navigationElements">Add User</a></p>
+    </div>
+<div class="formContainer">
+
+    <Form action="/user" method="post" class="form">
+        <label for="username" class="label"> Username
+        <input placeholder="enter Username" class="input" name="username" id="username" /></label>
+        <Button type="submit" class="submitBtn">Add User</Button>
+
+    </Form>
+</div>
+</body>
+</html>

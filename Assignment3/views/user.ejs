@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Users</title>
+    <link rel="stylesheet" href="main.css"/>
+</head>
+<body>
+    <div  class="navigationContainer">
+        <p class="navigationElements"><a href="/" class="navigationElements">Home</a></p>
+        <p class="navigationElements"><a href="/add-user" class="navigationElements">Add User</a></p>
+       </div>
+       <% if (userList.length>0){ %>
+    <h1 style="margin-top: 50px;">All Registered Users</h1>
+    <div style="display: flex; margin-top: 20px; justify-content: center;">
+        <div style="border: 1px solid black; border-radius: 24px; width: 250px; height: auto; display: flex; flex-direction:column; gap: 10px; align-items: center;" >
+           <% for( const user of userList){ %>
+            <h4><%= user.username%></h4>
+            <% } %>
+        </div>
+
+    </div>
+    <% }else{ %>
+        <h1 style="margin-top: 50px;">No user Found <em>Register User User First</em></h1> 
+        <% } %>
+</body>
+</html>
