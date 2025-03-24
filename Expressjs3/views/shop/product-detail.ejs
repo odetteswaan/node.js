@@ -1,0 +1,17 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+    <link rel="stylesheet" href="/css/forms.css">
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+        <main class="centered">
+            <h1><%= product.title %></h1>
+            <hr style="width: 100%;">
+            <div>
+                <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="width:400px;height:400px;">
+            </div>
+            <h2><%= product.price %></h2>
+            <p><%= product.description %></p>
+            
+        </main>
+       
