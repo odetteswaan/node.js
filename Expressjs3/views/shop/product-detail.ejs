@@ -10,8 +10,13 @@
             <div>
                 <img src="<%= product.imageUrl %>" alt="<%= product.title %>" style="width:400px;height:400px;">
             </div>
-            <h2><%= product.price %></h2>
+            <h2><%= product.price %> $</h2>
             <p><%= product.description %></p>
+
+            <form action="/cart" method="POST">
+                <input type="hidden" name="productId" value="<%= product.id %>"/>
+                <button class="btn" type="submit">Add to Cart</button>
+            </form>
             
         </main>
        
