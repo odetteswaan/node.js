@@ -3,4 +3,11 @@
 
     <body>
         <%- include('../includes/navigation.ejs') %>
+<% for(let cartdata of cartProductsData){ %>
+<div style="width: 600px;display: flex; justify-content: space-between; border: 2px solid red;">
+    <p><%= cartdata.productData.title %></p>
+    <p><%= cartdata.qty %></p>
+</div>
+<% } %>
+
         <%- include('../includes/end.ejs') %>
