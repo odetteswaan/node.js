@@ -71,3 +71,12 @@ exports.getCheckout = (req, res, next) => {
     pageTitle: 'Checkout'
   });
 };
+
+exports.deleteCartItem=(req,res,next)=>{
+  const prodId=req.body.productId;
+  const price=parseInt(req.body.price);
+  console.log(prodId,price)
+  Cart.deleteProduct(prodId,price)
+
+  res.redirect('/cart')
+}

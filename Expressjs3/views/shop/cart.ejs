@@ -3,11 +3,34 @@
 
     <body>
         <%- include('../includes/navigation.ejs') %>
-<% for(let cartdata of cartProductsData){ %>
-<div style="width: 600px;display: flex; justify-content: space-between; border: 2px solid red;">
-    <p><%= cartdata.productData.title %></p>
-    <p><%= cartdata.qty %></p>
-</div>
-<% } %>
+        <% if(cartProductsData.length>0){ %>
+          <div style="width: 100%; display: flex; align-items: center; flex-direction: column;gap: 10px;">
+            <div style="width: 80%;display: flex; justify-content: space-between;">
+                <h4>Product</h4>
+                <h4>Quantity</h4>
+                <h4>Price</h4>
+                <h4>Delete Item</h4>
+            </div>
+            <% for(let p of cartProductsData){ %>
+                <div style="width: 80%;display: flex; justify-content: space-between;">
+                    <h4><em><%=p.productData.title %></em></h4>  
+                    <h4><em><%= p.qty %></em></h4>
+                    <h4><em><%=p.productData.price %></em></h4>
+                    <form action="/delete-cart-item" method="POST">
+                        <input type="hidden" name="productId"value="<%= p.productData.id %>"/>
+                        <input type="hidden" name="price" value="<%=p.productData.price %>"/>
+                        <button class="btn" style="height: 40px;" type="submit">Delete</button>
+                    </form>
 
+                </div>
+            <% } %>
+            <div style="width: 80%;display: flex; justify-content:flex-end;">
+                <h3>Total Price : <%= totalPrice %></h3>
+            </div>
+
+
+          </div>
+        <% }else{ %>
+            <h2>Cart Is Empty Add Some Product To The Cart....!!</h2>
+        <% } %>
         <%- include('../includes/end.ejs') %>
