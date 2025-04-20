@@ -8,6 +8,8 @@ const Product=require('./models/product')
 const User=require('./models/User')
 const Cart=require('./models/Cart')
 const CartItem=require('./models/Cart-Item')
+const Order=require('./models/Order')
+const OrderItem=require('./models/Order-item')
 const app = express();
 
 app.set('view engine', 'ejs');
@@ -38,7 +40,10 @@ Cart.belongsTo(User)
 User.hasOne(Cart)
 Cart.belongsToMany(Product,{through:CartItem})
 Product.belongsToMany(Cart,{through:CartItem})
-
+Order.belongsTo(User)
+User.hasMany(Order)
+Product.belongsToMany(Order,{through:OrderItem})
+Order.belongsToMany(Product,{through:OrderItem})
 
 sequelize.sync().then((result)=>{
     
