@@ -13,12 +13,12 @@
             </div>
             <% for(let p of cartProductsData){ %>
                 <div style="width: 80%;display: flex; justify-content: space-between;">
-                    <h4><em><%=p.productData.title %></em></h4>  
-                    <h4><em><%= p.qty %></em></h4>
-                    <h4><em><%=p.productData.price %></em></h4>
+                    <h4><em><%=p.title %></em></h4>  
+                    <h4><em><%= p.CartItem.quantity %></em></h4>
+                    <h4><em><%=p.price %></em></h4>
                     <form action="/delete-cart-item" method="POST">
-                        <input type="hidden" name="productId"value="<%= p.productData.id %>"/>
-                        <input type="hidden" name="price" value="<%=p.productData.price %>"/>
+                        <input type="hidden" name="productId"value="<%= p.id %>"/>
+                        <input type="hidden" name="price" value="<%=p.price %>"/>
                         <button class="btn" style="height: 40px;" type="submit">Delete</button>
                     </form>
 
